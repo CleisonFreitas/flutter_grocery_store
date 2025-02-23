@@ -44,7 +44,7 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 child: Flex(
                   direction: Axis.vertical,
-                  spacing: 20,
+                  spacing: 10,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

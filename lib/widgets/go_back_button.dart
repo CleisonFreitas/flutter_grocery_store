@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_colors.dart';
 
 class GoBackButton extends StatefulWidget {
-  const GoBackButton({super.key});
+  final IconData? icon;
+
+  const GoBackButton({super.key, this.icon});
 
   @override
   State<GoBackButton> createState() => _GoBackButtonState();
@@ -10,6 +12,7 @@ class GoBackButton extends StatefulWidget {
 
 class _GoBackButtonState extends State<GoBackButton> {
   Color hoverColor = AppColors.darkContext;
+  IconData? get icon => widget.icon;
 
   void _changeHoverColor(bool isHovered) {
     setState(() {
@@ -21,7 +24,7 @@ class _GoBackButtonState extends State<GoBackButton> {
   Widget build(BuildContext context) {
     return IconButton(
       icon: Icon(
-        Icons.arrow_back_ios_sharp,
+        icon ?? Icons.arrow_back_ios_sharp,
         color: hoverColor,
       ),
       onPressed: () {
