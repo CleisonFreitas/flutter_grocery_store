@@ -15,7 +15,18 @@ class FormInput extends StatelessWidget {
   final bool? isNumeric;
   final String? label;
   final String? placeholder;
+  final bool? isPassword;
+  final bool? isCircularInput;
 
+  static const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
+    borderSide: BorderSide(
+      color: AppColors.labelColor,
+    ),
+  );
+  static OutlineInputBorder outlineInputBorder = OutlineInputBorder(
+    borderRadius: BorderRadius.circular(12),
+    borderSide: BorderSide.none,
+  );
   const FormInput({
     super.key,
     required this.controller,
@@ -29,6 +40,8 @@ class FormInput extends StatelessWidget {
     this.isNumeric,
     this.label,
     this.placeholder,
+    this.isPassword,
+    this.isCircularInput,
   });
 
   @override
@@ -44,36 +57,36 @@ class FormInput extends StatelessWidget {
           ),
         ],
         TextField(
-          cursorColor: AppColors.labelColor,
+          cursorColor: (isCircularInput != null && isCircularInput!)
+              ? AppColors.darkContext
+              : AppColors.labelColor,
           maxLength: maxLength ?? 255,
           maxLengthEnforcement: MaxLengthEnforcement.enforced,
-          obscureText: false,
-          style: AppTexts.label.copyWith(color: AppColors.labelColor),
+          obscureText: isPassword ?? false,
+          style: AppTexts.label.copyWith(color: AppColors.darkContext),
           controller: controller,
           keyboardType: keyboardType ?? TextInputType.text,
           autofocus: autoFocus ?? false,
           focusNode: focus ?? FocusNode(),
           decoration: InputDecoration(
             counterText: '',
-            focusColor: AppColors.primary,
-            focusedBorder: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.primary,
-              ),
-            ),
-            border: const UnderlineInputBorder(
-              borderSide: BorderSide(
-                color: AppColors.primary,
-              ),
-            ),
+            filled: isCircularInput,
+            focusColor: AppColors.labelColor,
+            focusedBorder: (isCircularInput != null && isCircularInput!)
+                ? FormInput.outlineInputBorder
+                : underlineInputBorder,
+            border: (isCircularInput != null && isCircularInput!)
+                ? FormInput.outlineInputBorder
+                : underlineInputBorder,
             labelStyle: AppTexts.label,
+            fillColor: AppColors.modalColor,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             prefixIcon: icon != null ? Icon(icon) : null,
             prefix: prefix != null
                 ? Text(
                     '$prefix ',
                     style: AppTexts.label.copyWith(
-                      color: AppColors.primary,
+                      color: AppColors.labelColor,
                     ),
                   )
                 : null,

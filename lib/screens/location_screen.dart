@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_colors.dart';
 import 'package:nt_app/constants/app_texts.dart';
+import 'package:nt_app/screens/login_screen.dart';
 import 'package:nt_app/widgets/content_container.dart';
-import 'package:nt_app/widgets/custom_button.dart';
 import 'package:nt_app/widgets/form_input.dart';
 import 'package:nt_app/widgets/go_back_button.dart';
+import 'package:nt_app/widgets/requisition_modal.dart';
 
 class LocationScreen extends StatefulWidget {
   const LocationScreen({super.key});
@@ -14,14 +15,22 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
-  final _textZoneController = TextEditingController();
-  final _textAreaController = TextEditingController();
+  final _zipCodeController = TextEditingController();
+  final _addressController = TextEditingController();
+  final _addressNumberController = TextEditingController();
+  final _neighborHoodController = TextEditingController();
+  final _cityController = TextEditingController();
+  final _complementController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
-    _textAreaController.dispose();
-    _textZoneController.dispose();
+    _addressController.dispose();
+    _addressNumberController.dispose();
+    _cityController.dispose();
+    _neighborHoodController.dispose();
+    _zipCodeController.dispose();
+    _complementController.dispose();
   }
 
   @override
@@ -57,25 +66,89 @@ class _LocationScreenState extends State<LocationScreen> {
                 ],
               ),
             ),
-            const SizedBox(height: 5),
-            FormInput(
-              controller: _textZoneController,
-              label: 'Your Zone',
-              placeholder: 'Type your zone',
+            Expanded(
+              child: Flex(
+                direction: Axis.vertical,
+                spacing: 20,
+                children: <Widget>[
+                  FormInput(
+                    controller: _zipCodeController,
+                    placeholder: 'Only numbers',
+                    autoFocus: true,
+                    isNumeric: true,
+                    keyboardType: TextInputType.number,
+                    maxLength: 8,
+                    label: 'Zip code',
+                    icon: Icons.maps_home_work,
+                  ),
+                  RequisitionModal(
+                    modalName: 'Submit',
+                    action: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    ),
+                    colorButton: AppColors.primary,
+                    content: SingleChildScrollView(
+                      child: Flex(
+                        direction: Axis.vertical,
+                        spacing: 10,
+                        children: <Widget>[
+                          FormInput(
+                            controller: _zipCodeController,
+                            isCircularInput: true,
+                            icon: Icons.maps_home_work,
+                          ),
+                          SizedBox(
+                            width: double.infinity,
+                            child: Wrap(
+                              alignment: WrapAlignment.spaceBetween,
+                              direction: Axis.horizontal,
+                              children: [
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.6,
+                                  child: FormInput(
+                                    controller: _addressController,
+                                    isCircularInput: true,
+                                    icon: Icons.streetview,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.3,
+                                  child: FormInput(
+                                    controller: _addressNumberController,
+                                    isCircularInput: true,
+                                    icon: Icons.numbers_rounded,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          FormInput(
+                            controller: _complementController,
+                            icon: Icons.comment,
+                            isCircularInput: true,
+                          ),
+                          FormInput(
+                            controller: _neighborHoodController,
+                            isCircularInput: true,
+                            icon: Icons.map_outlined,
+                          ),
+                          FormInput(
+                            controller: _cityController,
+                            isCircularInput: true,
+                            icon: Icons.location_city_sharp,
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              ),
             ),
-            const SizedBox(height: 8),
-            FormInput(
-              controller: _textAreaController,
-              label: 'Your Area',
-              placeholder: 'Type your area',
-            ),
-            const SizedBox(height: 25),
-            CustomButton(
-              text: 'Submit',
-              action: () {},
-              color: AppColors.primary,
-            ),
-            const SizedBox(height: 25)
           ],
         ),
       ),

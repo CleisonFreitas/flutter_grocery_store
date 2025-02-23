@@ -32,6 +32,15 @@ class _VerificationScreenState extends State<VerificationScreen> {
     );
   }
 
+  void _showSnackBar() {
+    const snack = SnackBar(
+      content: Text('The code has been sent!'),
+      duration: Duration(seconds: 1),
+      backgroundColor: AppColors.primary,
+    );
+    ScaffoldMessenger.of(context).showSnackBar(snack);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,7 +73,7 @@ class _VerificationScreenState extends State<VerificationScreen> {
             Positioned(
               bottom: 14,
               child: TextButton(
-                onPressed: () {},
+                onPressed: _showSnackBar,
                 child: Text(
                   'Resend the code',
                   style: AppTexts.label.copyWith(
