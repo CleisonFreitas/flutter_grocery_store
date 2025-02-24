@@ -6,6 +6,7 @@ import 'package:nt_app/constants/app_texts.dart';
 class FormInput extends StatelessWidget {
   final TextEditingController controller;
   final IconData? icon;
+  final IconData? suffixIcon;
   final String? prefix;
   final String? iconPath;
   final bool? autoFocus;
@@ -17,6 +18,7 @@ class FormInput extends StatelessWidget {
   final String? placeholder;
   final bool? isPassword;
   final bool? isCircularInput;
+  final VoidCallback? suffixAction;
 
   static const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
     borderSide: BorderSide(
@@ -42,6 +44,8 @@ class FormInput extends StatelessWidget {
     this.placeholder,
     this.isPassword,
     this.isCircularInput,
+    this.suffixIcon,
+    this.suffixAction,
   });
 
   @override
@@ -82,6 +86,12 @@ class FormInput extends StatelessWidget {
             fillColor: AppColors.modalColor,
             floatingLabelBehavior: FloatingLabelBehavior.always,
             prefixIcon: icon != null ? Icon(icon) : null,
+            suffixIcon: suffixIcon != null
+                ? IconButton(
+                    icon: Icon(suffixIcon),
+                    onPressed: suffixAction,
+                  )
+                : null,
             prefix: prefix != null
                 ? Text(
                     '$prefix ',

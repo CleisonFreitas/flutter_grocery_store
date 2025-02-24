@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_colors.dart';
 import 'package:nt_app/constants/app_texts.dart';
-import 'package:nt_app/screens/register_screen.dart';
+import 'package:nt_app/screens/login_screen.dart';
 import 'package:nt_app/widgets/content_container.dart';
 import 'package:nt_app/widgets/custom_button.dart';
 import 'package:nt_app/widgets/form_input.dart';
 import 'package:nt_app/widgets/form_password_input.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegisterScreenState extends State<RegisterScreen> {
+  final _userNameController = TextEditingController();
   final _emailAddressController = TextEditingController();
   final _passwordController = TextEditingController();
 
   @override
   void dispose() {
     super.dispose();
+    _userNameController.dispose();
     _emailAddressController.dispose();
     _passwordController.dispose();
   }
@@ -43,9 +45,9 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Image.asset('assets/images/mini_logo.png'),
                 ),
               ),
-              const Text('Loging', style: AppTexts.medium),
+              const Text('Sign Up', style: AppTexts.medium),
               Text(
-                'Enter your email and password',
+                'Enter your credentials to continue',
                 style: AppTexts.label.copyWith(
                   color: AppColors.labelColor,
                 ),
@@ -57,9 +59,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   spacing: 30,
                   children: <Widget>[
                     FormInput(
+                      controller: _userNameController,
+                      label: 'Username',
+                      autoFocus: true,
+                    ),
+                    FormInput(
                       controller: _emailAddressController,
                       label: 'Email',
-                      autoFocus: true,
                     ),
                     const SizedBox(height: 30),
                     Column(
@@ -70,11 +76,35 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 10),
                         Align(
-                          alignment: Alignment.bottomRight,
-                          child: Text(
-                            'Forgot the password?',
-                            style: AppTexts.label.copyWith(
-                              color: AppColors.darkContext,
+                          alignment: Alignment.bottomLeft,
+                          child: RichText(
+                            text: TextSpan(
+                              children: [
+                                TextSpan(
+                                  text: 'By continuing you agree to our ',
+                                  style: AppTexts.label.copyWith(
+                                    color: AppColors.labelColor,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Terms of Service',
+                                  style: AppTexts.label.copyWith(
+                                    color: AppColors.primary,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: ' and ',
+                                  style: AppTexts.label.copyWith(
+                                    color: AppColors.labelColor,
+                                  ),
+                                ),
+                                TextSpan(
+                                  text: 'Privacy Policy',
+                                  style: AppTexts.label.copyWith(
+                                    color: AppColors.primary,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         )
@@ -82,7 +112,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     ),
                     const SizedBox(height: 30),
                     CustomButton(
-                      text: 'Log In',
+                      text: 'Sign Up',
                       action: () {},
                       color: AppColors.primary,
                     ),
@@ -93,7 +123,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Text(
-                          "Don't have an account?",
+                          "Already have an account?",
                           style: AppTexts.label.copyWith(
                             color: AppColors.darkContext,
                           ),
@@ -105,20 +135,18 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (_) => const RegisterScreen(),
+                                  builder: (_) => const LoginScreen(),
                                 ),
                               );
                             },
-                            child: RichText(
-                              text: TextSpan(
-                                text: 'Sign Up',
-                                style: AppTexts.label.copyWith(
-                                  color: AppColors.primary,
-                                ),
+                            child: Text(
+                              "Sign In",
+                              style: AppTexts.label.copyWith(
+                                color: AppColors.primary,
                               ),
                             ),
                           ),
-                        ),
+                        )
                       ],
                     )
                   ],
