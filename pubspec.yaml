@@ -40,7 +40,7 @@ flutter:
     - assets/images/background_blur.png
     - assets/images/blur.png
     - assets/images/map_image.png
-
+    - assets/images/mini_logo.png
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
 
