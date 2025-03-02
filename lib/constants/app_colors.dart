@@ -11,4 +11,5 @@ class AppColors {
   static const Color labelColor = Color(0xFF828282);
   static const Color darkContext = Color(0xFF000000);
   static const Color modalColor = Color(0xFFE5E5E5);
+  static const Color cardBorderColor = Color(0xFFE2E2E2);
 }

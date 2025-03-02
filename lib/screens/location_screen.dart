@@ -41,7 +41,7 @@ class _LocationScreenState extends State<LocationScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             const GoBackButton(),
-            const SizedBox(height: 50),
+            const SizedBox(height: 30),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
@@ -97,8 +97,8 @@ class _LocationScreenState extends State<LocationScreen> {
                         children: <Widget>[
                           FormInput(
                             controller: _zipCodeController,
-                            isCircularInput: true,
                             icon: Icons.maps_home_work,
+                            label: 'Zip code',
                           ),
                           SizedBox(
                             width: double.infinity,
@@ -111,8 +111,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                       MediaQuery.of(context).size.width * 0.6,
                                   child: FormInput(
                                     controller: _addressController,
-                                    isCircularInput: true,
                                     icon: Icons.streetview,
+                                    label: 'Adress',
                                   ),
                                 ),
                                 SizedBox(
@@ -120,8 +120,8 @@ class _LocationScreenState extends State<LocationScreen> {
                                       MediaQuery.of(context).size.width * 0.3,
                                   child: FormInput(
                                     controller: _addressNumberController,
-                                    isCircularInput: true,
                                     icon: Icons.numbers_rounded,
+                                    label: 'Number',
                                   ),
                                 ),
                               ],
@@ -130,17 +130,17 @@ class _LocationScreenState extends State<LocationScreen> {
                           FormInput(
                             controller: _complementController,
                             icon: Icons.comment,
-                            isCircularInput: true,
+                            label: 'Complement',
                           ),
                           FormInput(
                             controller: _neighborHoodController,
-                            isCircularInput: true,
                             icon: Icons.map_outlined,
+                            label: 'Neighborhood',
                           ),
                           FormInput(
                             controller: _cityController,
-                            isCircularInput: true,
                             icon: Icons.location_city_sharp,
+                            label: 'City',
                           ),
                         ],
                       ),
