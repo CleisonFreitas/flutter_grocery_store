@@ -41,11 +41,11 @@ class RequisitionModal extends StatelessWidget {
             height: MediaQuery.of(context).size.height * 1,
             padding: const EdgeInsets.all(16),
             decoration: const BoxDecoration(
-              color: Colors.white,
+              color: AppColors.secondary,
               borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
             ),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
                 const SizedBox(height: 20),
                 Expanded(child: content),

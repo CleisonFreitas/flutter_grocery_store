@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_colors.dart';
 import 'package:nt_app/constants/app_texts.dart';
+import 'package:nt_app/screens/home_screen.dart';
 import 'package:nt_app/screens/register_screen.dart';
 import 'package:nt_app/widgets/content_container.dart';
 import 'package:nt_app/widgets/custom_button.dart';
@@ -83,7 +84,14 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 30),
                     CustomButton(
                       text: 'Log In',
-                      action: () {},
+                      action: () {
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const HomeScreen(),
+                          ),
+                        );
+                      },
                       color: AppColors.primary,
                     ),
                     const SizedBox(height: 10),
