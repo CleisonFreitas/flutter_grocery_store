@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_texts.dart';
+import 'package:nt_app/enums/metric_enum.dart';
+import 'package:nt_app/screens/product_detail_screen.dart';
 import 'package:nt_app/widgets/banner_slide.dart';
 import 'package:nt_app/widgets/card_product.dart';
 import 'package:nt_app/widgets/categories.dart';
@@ -80,20 +82,37 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: double.infinity,
                   child: SingleChildScrollView(
                     controller: ScrollController(),
-                    child: const Row(
+                    child: Row(
                       spacing: 10,
                       children: [
                         CardProduct(
                           productName: 'Organic Bananas',
                           productImage:
                               'assets/images/grocery_items/banana.png',
-                          productCost: 10.5,
+                          productCost: 20,
+                          metric: MetricEnum.kilogram,
+                          quantity: 1,
+                          action: () {},
                         ),
                         CardProduct(
-                          productName: 'Red Peppers',
+                          productName: 'Red Apples',
                           productImage:
                               'assets/images/grocery_items/pepper.png',
                           productCost: 10.5,
+                          metric: MetricEnum.kilogram,
+                          quantity: 1,
+                          action: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (BuildContext context) =>
+                                    const ProductDetailScreen(
+                                  metric: MetricEnum.kilogram,
+                                  productCost: 10.5,
+                                ),
+                              ),
+                            );
+                          },
                         ),
                       ],
                     ),

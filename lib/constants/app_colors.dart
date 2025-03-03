@@ -12,4 +12,5 @@ class AppColors {
   static const Color darkContext = Color(0xFF000000);
   static const Color modalColor = Color(0xFFE5E5E5);
   static const Color cardBorderColor = Color(0xFFE2E2E2);
+  static const Color fruitBackGroundColor = Color(0xFFF2F3F2);
 }
