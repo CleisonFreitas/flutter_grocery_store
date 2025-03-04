@@ -45,7 +45,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Container(
-                height: 271.44,
+                height: 211.44,
                 decoration: const BoxDecoration(
                   color: AppColors.fruitBackGroundColor,
                   borderRadius: BorderRadius.only(
@@ -53,12 +53,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     bottomRight: Radius.circular(16),
                   ),
                 ),
-                alignment: Alignment.center,
-                child: SizedBox(
-                  height: 250,
-                  child: Image.asset(
-                    'assets/images/grocery_items/apple.png',
-                    fit: BoxFit.cover,
+                child: Align(
+                  alignment: Alignment.topCenter,
+                  child: SizedBox(
+                    height: 170,
+                    child: Image.asset(
+                      'assets/images/grocery_items/apple.png',
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
               ),

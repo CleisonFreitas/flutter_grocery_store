@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_colors.dart';
 import 'package:nt_app/constants/app_texts.dart';
+import 'package:nt_app/helpers/mask_formatter.dart';
 import 'package:nt_app/screens/login_screen.dart';
 import 'package:nt_app/widgets/content_container.dart';
 import 'package:nt_app/widgets/form_input.dart';
@@ -77,9 +78,10 @@ class _LocationScreenState extends State<LocationScreen> {
                     autoFocus: true,
                     isNumeric: true,
                     keyboardType: TextInputType.number,
-                    maxLength: 8,
+                    maxLength: 10,
                     label: 'Zip code',
                     icon: Icons.maps_home_work,
+                    formatters: MaskFormatter.zipCodeFormatter(),
                   ),
                   RequisitionModal(
                     modalName: 'Submit',
