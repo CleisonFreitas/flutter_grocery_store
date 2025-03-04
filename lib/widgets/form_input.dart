@@ -19,6 +19,7 @@ class FormInput extends StatelessWidget {
   final bool? isPassword;
   final bool? isCircularInput;
   final VoidCallback? suffixAction;
+  final TextInputFormatter? formatters;
 
   static const UnderlineInputBorder underlineInputBorder = UnderlineInputBorder(
     borderSide: BorderSide(
@@ -46,6 +47,7 @@ class FormInput extends StatelessWidget {
     this.isCircularInput,
     this.suffixIcon,
     this.suffixAction,
+    this.formatters,
   });
 
   @override
@@ -61,6 +63,7 @@ class FormInput extends StatelessWidget {
           ),
         ],
         TextField(
+          inputFormatters: formatters != null ? [formatters!] : [],
           cursorColor: (isCircularInput != null && isCircularInput!)
               ? AppColors.darkContext
               : AppColors.labelColor,

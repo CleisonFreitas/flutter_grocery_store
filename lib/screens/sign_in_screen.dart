@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_colors.dart';
 import 'package:nt_app/constants/app_texts.dart';
+import 'package:nt_app/helpers/mask_formatter.dart';
 import 'package:nt_app/screens/number_validation_screen.dart';
 import 'package:nt_app/widgets/custom_button.dart';
 import 'package:nt_app/widgets/form_input.dart';
@@ -56,8 +57,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       controller: _numberInputController,
                       prefix: '+55',
                       icon: Icons.phone_android_sharp,
-                      keyboardType: TextInputType.number,
-                      maxLength: 12,
+                      keyboardType: TextInputType.phone,
+                      maxLength: 16,
+                      formatters: MaskFormatter.phoneFormatter(),
                     ),
                     SizedBox(
                       width: double.infinity,

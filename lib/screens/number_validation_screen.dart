@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_colors.dart';
 import 'package:nt_app/constants/app_texts.dart';
+import 'package:nt_app/helpers/mask_formatter.dart';
 import 'package:nt_app/screens/verification_screen.dart';
 import 'package:nt_app/widgets/content_container.dart';
 import 'package:nt_app/widgets/custom_floating_button.dart';
@@ -47,11 +48,12 @@ class _NumberValidationScreenState extends State<NumberValidationScreen> {
               label: 'Mobile Number',
               controller: _numberInputController,
               autoFocus: true,
-              maxLength: 12,
+              maxLength: 16,
               isNumeric: true,
-              icon: Icons.phone_callback_outlined,
-              keyboardType: TextInputType.number,
+              icon: Icons.phone_android,
+              keyboardType: TextInputType.phone,
               prefix: '+55 ',
+              formatters: MaskFormatter.phoneFormatter(),
             )
           ],
         ),
