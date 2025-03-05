@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 class AppTexts {
   AppTexts._();
 
+  static const TextStyle navigateTitle = TextStyle(
+    fontSize: 12,
+    fontFamily: 'Roboto',
+    fontWeight: FontWeight.bold,
+  );
+
   static const TextStyle medium = TextStyle(
     fontSize: 22,
     fontFamily: 'Roboto',

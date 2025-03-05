@@ -7,6 +7,7 @@ import 'package:nt_app/widgets/card_product.dart';
 import 'package:nt_app/widgets/categories.dart';
 import 'package:nt_app/widgets/content_container.dart';
 import 'package:nt_app/widgets/form_input.dart';
+import 'package:nt_app/widgets/navigation_background.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -28,15 +29,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      bottomNavigationBar: Row(
-        children: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.house),
-          )
-        ],
-      ),
+    return NavigationBackground(
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
