@@ -48,22 +48,28 @@ class _BannerSlideState extends State<BannerSlide> {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+      ),
       height: 100,
-      child: PageView.builder(
-        controller: _pageController,
-        itemCount: _images.length,
-        onPageChanged: (index) {
-          setState(() {
-            _currentPage = index;
-          });
-        },
-        itemBuilder: (context, index) {
-          return Image.asset(
-            _images[index],
-            fit: BoxFit.fill,
-          );
-        },
+      child: ClipRRect(
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+        child: PageView.builder(
+          controller: _pageController,
+          itemCount: _images.length,
+          onPageChanged: (index) {
+            setState(() {
+              _currentPage = index;
+            });
+          },
+          itemBuilder: (context, index) {
+            return Image.asset(
+              _images[index],
+              fit: BoxFit.cover,
+            );
+          },
+        ),
       ),
     );
   }

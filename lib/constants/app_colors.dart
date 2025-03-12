@@ -13,4 +13,15 @@ class AppColors {
   static const Color modalColor = Color(0xFFE5E5E5);
   static const Color cardBorderColor = Color(0xFFE2E2E2);
   static const Color fruitBackGroundColor = Color(0xFFF2F3F2);
+
+  // Sessões
+  static const Color fruitVegetablesColor100 =
+      Color.fromARGB(255, 170, 240, 196);
+  static const Color fruitVegetablesColor600 = Color.fromARGB(255, 3, 138, 53);
+  static const Color oilColor100 = Color.fromARGB(255, 247, 215, 181);
+  static const Color oilColor600 = Color.fromARGB(255, 226, 131, 28);
+  static const Color meatFish100 = Color.fromARGB(255, 244, 200, 190);
+  static const Color meatFish600 = Color.fromARGB(255, 205, 110, 8);
+  static const Color bakery100 = Color.fromARGB(255, 213, 193, 220);
+  static const Color bakery600 = Color.fromARGB(255, 193, 68, 238);
 }

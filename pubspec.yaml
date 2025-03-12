@@ -52,6 +52,10 @@ flutter:
     - assets/images/grocery_items/apple.png
     - assets/images/grocery_items/banana.png
     - assets/images/grocery_items/pepper.png
+    - assets/images/sessoes/diversos.png
+    - assets/images/sessoes/oil_items.png
+    - assets/images/sessoes/padaria_items.png
+    - assets/images/sessoes/meat_fish.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

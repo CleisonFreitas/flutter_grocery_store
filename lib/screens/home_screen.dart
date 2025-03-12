@@ -5,7 +5,6 @@ import 'package:nt_app/screens/product_detail_screen.dart';
 import 'package:nt_app/widgets/banner_slide.dart';
 import 'package:nt_app/widgets/card_product.dart';
 import 'package:nt_app/widgets/categories.dart';
-import 'package:nt_app/widgets/content_container.dart';
 import 'package:nt_app/widgets/form_input.dart';
 import 'package:nt_app/widgets/navigation_background.dart';
 
@@ -33,12 +32,13 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SizedBox(
         height: double.infinity,
         width: double.infinity,
-        child: ContentContainer(
+        child: Container(
+          padding: const EdgeInsets.all(12),
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                Image.asset('assets/images/mini_logo.png'),
+                Image.asset('assets/images/mini_logo.png', width: 25),
                 const SizedBox(height: 10),
                 const Wrap(
                   alignment: WrapAlignment.center,
