@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:nt_app/constants/app_colors.dart';
 import 'package:nt_app/constants/app_texts.dart';
+import 'package:nt_app/screens/categories_screen.dart';
 
 class NavigationBackground extends StatefulWidget {
   final Widget body;
+  final String? title;
 
-  const NavigationBackground({super.key, required this.body});
+  const NavigationBackground({super.key, required this.body, this.title});
 
   @override
   State<NavigationBackground> createState() => _NavigationBackgroundState();
@@ -14,14 +16,38 @@ class NavigationBackground extends StatefulWidget {
 class _NavigationBackgroundState extends State<NavigationBackground> {
   int currentPageIndex = 0;
   Widget get _body => widget.body;
+  String? get _title => widget.title;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _title != null
+          ? AppBar(
+              title: Text(
+                _title!,
+                style: AppTexts.label.copyWith(
+                  color: AppColors.darkContext,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              centerTitle: true,
+              backgroundColor: AppColors.secondary,
+              automaticallyImplyLeading: false,
+              scrolledUnderElevation: 12,
+            )
+          : null,
       bottomNavigationBar: NavigationBar(
         onDestinationSelected: (int index) {
           setState(() {
             currentPageIndex = index;
+            if (currentPageIndex == 1) {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const CategoriesScreen(),
+                ),
+              );
+            }
           });
         },
         indicatorColor: AppColors.fruitBackGroundColor,
